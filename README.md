@@ -4,4 +4,5 @@
 
 run project:
 yarn
+
 npm run start
