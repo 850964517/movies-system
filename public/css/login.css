@@ -1,0 +1,17 @@
+
+.login-box {
+	width: 400px;
+	margin: 50px auto;
+}
+.login-form {
+	margin-top: 30px;
+}
+.pull-right {
+	float: right;
+	width: 58px;
+	line-height: 30px;
+	border-radius: 3px;
+	margin-top: 10px;
+	cursor: pointer;
+	text-align: center;
+}

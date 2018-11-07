@@ -1,0 +1,13 @@
+extend ../layout
+
+block content
+	.login-box
+		form.form-signin
+			h1.h3.mb-3.text-center 电影管理系统
+			.login-form
+				label.control-label 用户名:
+				input.form-control#username(type="text", placeholder="请输入用户名")
+				label.control-label(style="margin-top:20px") 密  码:
+				input.form-control#password(type="password", placeholder="请输入密码")
+				span#login-btn.btn-primary.pull-right(type="bottom") 登录
+	script(src="/js/login.js")
