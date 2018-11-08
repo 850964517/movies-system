@@ -5,7 +5,13 @@
   "main": "index.js",
   "scripts": {
     "start": "node app.js",
+    "lint": "npm run lint:js",
+    "lint:js": "eslint --ext .js,schemas public/js models controller --fix",
+    "precommit": "lint-staged",
     "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "lint-staged": {
+    "schemas public/js models controller": "eslint"
   },
   "keywords": [
     "movies",
@@ -19,6 +25,7 @@
     "jade": "^1.11.0",
     "moment": "^2.22.2",
     "mongoose": "^5.3.9",
+    "pre-commit": "^1.2.2",
     "underscore": "^1.9.1"
   }
 }
