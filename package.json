@@ -9,9 +9,6 @@
     "lint:js": "eslint --ext .js,schemas public/js models controller --fix",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "pre-commit": [
-    "eslint" // 与scripts中的脚本名称一一对应
-  ],
   "keywords": [
     "movies",
     "node",
