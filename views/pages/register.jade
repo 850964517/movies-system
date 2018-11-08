@@ -1,14 +1,15 @@
 extend ../layout
-
 block content
 	.login-box
 		form.form-signin
-			h1.h3.mb-3.text-center 电影管理系统-登录
+			h1.h3.mb-3.text-center 电影管理系统-注册
 			.login-form
 				label.control-label 用户名:
 				input.form-control#username(type="text", placeholder="请输入用户名")
 				label.control-label(style="margin-top:20px") 密  码:
 				input.form-control#password(type="password", placeholder="请输入密码")
-				a.btn.btn-default(href='/register',role='button',style="margin-top:5px") 注册
-				span#login-btn.btn-primary.pull-right(type="bottom") 登录
+				label.control-label(style="margin-top:20px") 确认密码:
+				input.form-control#res-password(type="password", placeholder="请再次输入密码")
+				a.btn.btn-default(href='/',role='button',style="margin-top:5px") 登录
+				span#register-btn.btn-primary.pull-right(type="bottom") 注册
 	script(src="/js/user.js")

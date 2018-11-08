@@ -3,7 +3,7 @@ var router = express.Router()
 
 router.get("/", function (req, res) {
 	res.render('login', {
-		url: '/css/login.css'
+		url: '/css/user.css'
 	})
 })
 

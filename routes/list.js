@@ -4,7 +4,7 @@ var router = express.Router()
 router.get("/list", function (req, res) {
 	res.render('list', {
 		title: '电影列表页',
-		url: '/css/login.css'
+		url: '/css/user.css'
 	})
 })
 

@@ -6,7 +6,7 @@ var userSchema = new mongoose.Schema({
 })
 
 userSchema.statics = {
-	login: function (userName,password,callback) {
+	searchOne: function (userName,password,callback) {
 		return this.findOne({
 			userName: userName,
 			password: password
