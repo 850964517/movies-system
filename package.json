@@ -7,12 +7,11 @@
     "start": "node app.js",
     "lint": "npm run lint:js",
     "lint:js": "eslint --ext .js,schemas public/js models controller --fix",
-    "precommit": "lint-staged",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "lint-staged": {
-    "schemas public/js models controller": "eslint"
-  },
+  "pre-commit": [
+    "eslint" // 与scripts中的脚本名称一一对应
+  ],
   "keywords": [
     "movies",
     "node",
