@@ -7,6 +7,7 @@
     "start": "node app.js",
     "lint": "npm run lint:js",
     "lint:js": "eslint --ext .js,schemas public/js models controller --fix",
+    "precommit": "npm run lint",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
@@ -23,5 +24,8 @@
     "mongoose": "^5.3.9",
     "pre-commit": "^1.2.2",
     "underscore": "^1.9.1"
+  },
+  "devDependencies": {
+    "husky": "^1.1.3"
   }
 }
