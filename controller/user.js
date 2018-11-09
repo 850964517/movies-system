@@ -7,21 +7,21 @@ const userAction = {
 				res.json({
 					code: 500,
 					msg: err
-				})
+				});
 			}
 			if (!userData) {
 				res.json({
 					code: 500,
 					msg: '用户名密码错误'
-				})
+				});
 			} else{
-				req.session.user = userData
+				req.session.user = userData;
 				res.json({
 					code: 200,
 					msg: '登录成功'
-				})
+				});
 			}
-		})
+		});
 	},
 	register (req,res) {
 		const reqBody = req.body;

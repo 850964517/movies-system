@@ -5,7 +5,7 @@ var path = require('path')
 var bodyParser = require('body-parser')
 var cookieParser = require('cookie-parser')
 var session = require('express-session')
-// const MongoStore = require('connect-mongo')(express)
+const MongoStore = require('connect-mongo')(session)
 
 var port = process.env.PORT || 5000
 
@@ -30,6 +30,10 @@ app.use(session({
 	cookie: {maxAge: 80000 },  //设置maxAge是80000ms，即80s后session和相应的cookie失效过期
 	resave: false,
 	saveUninitialized: true,
+	store: new MongoStore({ // 利用mongodb实现session持久化
+		url: dbUrl,
+		collection: 'sessions'
+	})
 }));
 require('./config/routes')(app)
 app.listen(port)
