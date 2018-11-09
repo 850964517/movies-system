@@ -18,7 +18,10 @@
   "author": "zhengwencai",
   "license": "MIT",
   "dependencies": {
+    "connect-mongo": "^2.0.1",
+    "cookie-parser": "^1.4.3",
     "express": "^4.16.4",
+    "express-session": "^1.15.6",
     "jade": "^1.11.0",
     "moment": "^2.22.2",
     "mongoose": "^5.3.9",

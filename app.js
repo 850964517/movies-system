@@ -3,15 +3,15 @@ var app =  express()
 var mongoose = require('mongoose')
 var path = require('path')
 var bodyParser = require('body-parser')
+var cookieParser = require('cookie-parser')
+var session = require('express-session')
+// const MongoStore = require('connect-mongo')(express)
+
 var port = process.env.PORT || 5000
-var login = require('./routes/login')
-var register = require('./routes/register')
-var list = require('./routes/list')
 
-var userAction = require('./controller/user')
-
+const dbUrl = 'mongodb://localhost:27017/moviesDB'
 // 链接数据库
-mongoose.connect('mongodb://localhost:27017/moviesDB',{useNewUrlParser:true}, (err) => {
+mongoose.connect(dbUrl,{useNewUrlParser:true}, (err) => {
 	if (err){
 		console.log(err)
 	} else {
@@ -20,29 +20,18 @@ mongoose.connect('mongodb://localhost:27017/moviesDB',{useNewUrlParser:true}, (e
 })
 app.set('views', './views/pages')
 app.set('view engine', 'jade')
+app.set('trust proxy', 1) 
+app.use(cookieParser())
 app.use(express.static(path.join(__dirname,'public')))
 app.use(bodyParser.urlencoded({extended: true}))
 app.use(bodyParser.json())
+app.use(session({
+	secret: 'userinfo', 
+	cookie: {maxAge: 80000 },  //设置maxAge是80000ms，即80s后session和相应的cookie失效过期
+	resave: false,
+	saveUninitialized: true,
+}));
+require('./config/routes')(app)
 app.listen(port)
-
-// 设置跨域访问
-app.all("*", (req,res,next) => {
-	res.header("Access-Control-Allow-Origin","*")
-	res.header("Access-Control-Allow-Headers","X-Requested-With")
-	res.header("Access-Control-Allow-Methods","PUT,POST,GET,DELETE,OPTIONS")
-	res.header("X-Powered-By","node/express")
-	next() // 执行next方法,将路由转移
-})
-//登录路由
-app.get('/', login)
-// 电影列表页
-app.get('/list', list)
-
-app.get('/register', register)
-
-//登录方法
-app.post('/login', userAction.login)
-
-app.post('/register', userAction.register)
 
 console.log('server run in port:' + port)
