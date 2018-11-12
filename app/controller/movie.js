@@ -1,7 +1,5 @@
-var express = require("express")
-var router = express.Router()
-
-router.get("/list", function (req, res) {
+// 电影列表
+module.exports.list = function (req,res) {
 	if (!req.session.user) {
 		return res.redirect('/')
 	}
@@ -9,6 +7,4 @@ router.get("/list", function (req, res) {
 		title: '电影列表页',
 		url: '/css/user.css'
 	})
-})
-
-module.exports = router
+}
