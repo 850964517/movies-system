@@ -12,17 +12,17 @@ module.exports = (app) => {
 		next(); // 执行next方法,将路由转移
 	});
 	//登录路由
-	app.get('/', user.showSignin)
+	app.get('/', user.showSignin);
 	//注册路由
-	app.get('/register', user.showSignup)
+	app.get('/register', user.showSignup);
 	// 电影列表页
-	app.get('/list',user.isLoginRequired, movie.list)
+	app.get('/list',user.isLoginRequired, movie.list);
 	
 
 	// //登录方法
-	app.post('/login', user.login)
+	app.post('/login', user.login);
 	// 退出
-	app.get('/logout', user.logout)
+	app.get('/logout', user.logout);
 	// 注册方法
-	app.post('/register', user.register)
+	app.post('/register', user.register);
 };
