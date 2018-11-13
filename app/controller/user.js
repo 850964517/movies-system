@@ -1,5 +1,6 @@
 const userModel = require('../models/userInfo');
 const bcrypt = require('bcrypt')
+const saltRounds = 10;
 // 登录路由
 module.exports.showSignin = function (req, res) {
 	res.render('login', {
@@ -15,14 +16,15 @@ module.exports.showSignup = function (req, res) {
 // 登录方法
 module.exports.login = function (req,res) {
 	const reqBody = req.body;
-	userModel.searchOne(reqBody.username, reqBody.password, (err, userData) => {
+	userModel.searchOne(reqBody.username,(err, userData) => {
+		const pwdMatchFlag = bcrypt.compareSync(reqBody.password, userData.password);
 		if(err){
 			res.json({
 				code: 500,
 				msg: err
 			});
 		}
-		if (!userData) {
+		if (!pwdMatchFlag) {
 			res.json({
 				code: 500,
 				msg: '用户名密码错误'
@@ -50,9 +52,14 @@ module.exports.isLoginRequired = function (req,res,next) {
 // 注册
 module.exports.register = function (req, res) {
 	const reqBody = req.body;
+	let password = reqBody.password
+	 //随机生成salt
+    const salt = bcrypt.genSaltSync(saltRounds);
+    //获取hash值
+    var hashPassword = bcrypt.hashSync(password, salt);
 	var userData = new userModel({
 		userName: reqBody.username,
-		password: reqBody.password
+		password: hashPassword
 	});
 	userData.save((err) => {
 		if (err) {

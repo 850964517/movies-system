@@ -6,10 +6,10 @@ var userSchema = new mongoose.Schema({
 });
 
 userSchema.statics = {
-	searchOne: function (userName,password,callback) {
+	searchOne: function (userName,callback) {
 		return this.findOne({
-			userName: userName,
-			password: password
+			userName: userName
+			// password: password
 		}).exec(callback);
 	}
 };
