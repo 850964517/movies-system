@@ -17,25 +17,33 @@ module.exports.showSignup = function (req, res) {
 module.exports.login = function (req,res) {
 	const reqBody = req.body;
 	userModel.searchOne(reqBody.username,(err, userData) => {
-		const pwdMatchFlag = bcrypt.compareSync(reqBody.password, userData.password);
-		if(err){
-			res.json({
-				code: 500,
-				msg: err
-			});
-		}
-		if (!pwdMatchFlag) {
+		if (!userData) {
 			res.json({
 				code: 500,
 				msg: '用户名密码错误'
 			});
-		} else{
-			req.session.user = userData;
-			res.json({
-				code: 200,
-				msg: '登录成功'
-			});
-		}
+		} else {
+			const pwdMatchFlag = bcrypt.compareSync(reqBody.password, userData.password);
+			if(err){
+				res.json({
+					code: 500,
+					msg: err
+				});
+			}
+			if (!pwdMatchFlag) {
+				res.json({
+					code: 500,
+					msg: '用户名密码错误'
+				});
+			} else{
+				req.session.user = userData;
+				res.json({
+					code: 200,
+					msg: '登录成功'
+				});
+			}
+		}	
+		
 	});
 }
 // 退出
