@@ -7,3 +7,4 @@
 2018/11/10 添加git commit提交前校验
 		   添加session校验
 		   利用mongodb 实现session持久化
+实现了未登录控制，密码加密
