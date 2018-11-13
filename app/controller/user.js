@@ -36,6 +36,17 @@ module.exports.login = function (req,res) {
 		}
 	});
 }
+// 退出
+module.exports.logout = function (req,res) {
+	delete req.session.user
+	res.redirect('/')
+}
+module.exports.isLoginRequired = function (req,res,next) {
+	if (!req.session.user) {
+		return res.redirect('/')
+	}
+	next()
+}
 // 注册
 module.exports.register = function (req, res) {
 	const reqBody = req.body;

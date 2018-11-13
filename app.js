@@ -37,7 +37,7 @@ app.use(session({
 	saveUninitialized: true, // 是否设置session在存储容器中可以给修改，session过期30分钟，没有人操作时候session 30分钟后过期
 	store: new MongoStore({ // 利用mongodb实现session持久化
 		url: dbUrl,
-		collection: 'sessions'
+		collection: 'sessions' // mongodb中的表名
 	})
 }));
 require('./config/routes')(app)

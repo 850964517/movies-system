@@ -4,7 +4,7 @@
   "description": "一个电影管理网站",
   "main": "index.js",
   "scripts": {
-    "start": "node app.js",
+    "dev": "node app.js",
     "lint": "npm run lint:js",
     "lint:js": "eslint --ext .js,app config public/js",
     "precommit": "npm run lint",
