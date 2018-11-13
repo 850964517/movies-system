@@ -39,7 +39,8 @@ app.use(session({
 		url: dbUrl,
 		collection: 'sessions' // mongodb中的表名
 	})
-}));
+}))
+
 require('./config/routes')(app)
 app.listen(port)
 

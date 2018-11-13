@@ -1,5 +1,5 @@
 const userModel = require('../models/userInfo');
-
+const bcrypt = require('bcrypt')
 // 登录路由
 module.exports.showSignin = function (req, res) {
 	res.render('login', {
