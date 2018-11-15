@@ -30,6 +30,7 @@ module.exports.delMovie = function (req,res) {
 // 修改电影
 
 module.exports.updateMovie = function (req,res) {
+	console.log("dd")
 	res.render('update',{
 		url: '/css/page.css',
 		user: req.session.user

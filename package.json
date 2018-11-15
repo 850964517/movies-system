@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "node app.js",
     "lint": "npm run lint:js",
-    "lint:js": "eslint --ext .js,app config public/js --fix",
+    "lint:js": "eslint --ext .js,app/* config public/js --fix",
     "precommit": "npm run lint",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
