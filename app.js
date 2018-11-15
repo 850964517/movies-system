@@ -32,7 +32,7 @@ app.use(bodyParser.urlencoded({extended: true}))
 app.use(bodyParser.json())
 app.use(session({
 	secret: 'userinfo',  // session 名字
-	cookie: {maxAge: 80000 },  //设置maxAge是80000ms，即80s后session和相应的cookie失效过期
+	cookie: {maxAge: 8000000 },  //设置maxAge是80000ms，即80s后session和相应的cookie失效过期
 	resave: false, // 是否允许session重新设置，要保证session有操作的时候必须设置这个属性为true
 	saveUninitialized: true, // 是否设置session在存储容器中可以给修改，session过期30分钟，没有人操作时候session 30分钟后过期
 	store: new MongoStore({ // 利用mongodb实现session持久化

@@ -16,8 +16,9 @@ module.exports = (app) => {
 	//注册路由
 	app.get('/register', user.showSignup);
 	// 电影列表页
-	app.get('/list',user.isLoginRequired, movie.list);
-	
+	app.get('/movie/list',user.isLoginRequired, movie.list);
+	// 修改电影
+	app.get('/movie/update/:id',user.isLoginRequired, movie.updateMovie);
 
 	// //登录方法
 	app.post('/login', user.login);
@@ -25,4 +26,6 @@ module.exports = (app) => {
 	app.get('/logout', user.logout);
 	// 注册方法
 	app.post('/register', user.register);
+	//删除电影
+	app.delete('/movie/list',user.isLoginRequired, movie.delMovie);
 };

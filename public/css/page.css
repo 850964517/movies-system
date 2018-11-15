@@ -15,3 +15,7 @@
 	cursor: pointer;
 	text-align: center;
 }
+.list-title {
+	text-align: center;
+	font-size: 16px;
+}

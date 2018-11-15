@@ -4,13 +4,13 @@ const saltRounds = 10;
 // 登录路由
 module.exports.showSignin = function (req, res) {
 	res.render('login', {
-		url: '/css/user.css'
+		url: '/css/page.css'
 	})
 }
 // 注册路由
 module.exports.showSignup = function (req, res) {
 	res.render('register', {
-		url: '/css/user.css'
+		url: '/css/page.css'
 	})
 }
 // 登录方法

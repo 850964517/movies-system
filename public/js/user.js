@@ -17,7 +17,7 @@ $(function () {
 			},
 			success: function(data){
 				if (data.code === 200) {
-					window.location.href = '/list';
+					window.location.href = '/movie/list';
 				} else {
 					alert(data.msg);
 				}
