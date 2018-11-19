@@ -39,7 +39,7 @@ $(function() {
 	});
 
 	// 添加电影
-	$("#add-btn").on('click', function() {
+	$('#add-btn').on('click', function() {
 		const name = $('#movie-name').val();
 		const title = $('#movie-title').val();
 		const doctor = $('#movie-doctor').val();
@@ -48,7 +48,7 @@ $(function() {
 		const country = $('#movie-country').val();
 		const language = $('#movie-language').val();
 		const summary = $('#movie-summary').val();
-			$.ajax({
+		$.ajax({
 			url: '/movie/list',
 			type:'post',
 			data: {

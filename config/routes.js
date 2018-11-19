@@ -19,7 +19,7 @@ module.exports = (app) => {
 	app.get('/movie/list',user.isLoginRequired, movie.list);
 	// 修改电影
 	app.get('/movie/update/:id',user.isLoginRequired, movie.updateMovie);
-	app.get('/movie/add', user.isLoginRequired, movie.addMovie)
+	app.get('/movie/add', user.isLoginRequired, movie.addMovie);
 
 	// //登录方法
 	app.post('/login', user.login);
@@ -32,5 +32,5 @@ module.exports = (app) => {
 	// 修改电影
 	app.put('/movie/list',user.isLoginRequired,movie.save);
 
-	app.post('/movie/list',user.isLoginRequired,movie.save)
+	app.post('/movie/list',user.isLoginRequired,movie.save);
 };
