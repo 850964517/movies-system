@@ -1,5 +1,6 @@
 /* eslint-disable no-console */
 $(function(){
+	// 删除电影
 	$('.del').click(function(e) {
 		const $target = $(e.target);
 		const id = $target.data('id');

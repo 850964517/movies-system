@@ -28,4 +28,6 @@ module.exports = (app) => {
 	app.post('/register', user.register);
 	//删除电影
 	app.delete('/movie/list',user.isLoginRequired, movie.delMovie);
+	// 修改电影
+	app.put('/movie/list',user.isLoginRequired,movie.execUpdateMovie);
 };

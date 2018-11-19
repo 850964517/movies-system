@@ -1,7 +1,9 @@
 extend ../layout
 
 block content
-	p.list-title 电影列表
+	.head-box
+		p.list-title 电影列表
+		button.btn.btn-primary.add-btn(type="button") 添加电影
 	.container
 		.row
 			table.table.table-hover.table-bordered

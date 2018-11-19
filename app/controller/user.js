@@ -75,5 +75,7 @@ module.exports.register = function (req, res) {
 				msg: '注册成功'
 			});
 		}
+	}, err => {
+		console.log(err)
 	});
 }
