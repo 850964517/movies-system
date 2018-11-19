@@ -31,6 +31,12 @@ module.exports.delMovie = function (req,res) {
 	})
 }	
 
+module.exports.addMovie = function (req,res) {
+	res.render('movieAdd', {
+		url: '/css/page.css'
+	})
+}
+
 // 修改电影
 module.exports.updateMovie = function (req,res) {
 	const id = req.params.id
@@ -50,27 +56,59 @@ module.exports.updateMovie = function (req,res) {
 }
 
 // 执行修改电影
-module.exports.execUpdateMovie = function (req,res) {
+module.exports.save = function (req,res) {
 	const reqBody = req.body
 	const id = reqBody.id
-	movieModel.updateOne({ _id : id},{
-		name: reqBody.name,
-		title: reqBody.title,
-		doctor: reqBody.doctor,
-		year: reqBody.year,
-		updateTime: reqBody.updateTime,
-		country: reqBody.country
-	}, (err, data) => {
-		if (err) {
-			res.json({
-				code: 500,
-				msg: err
-			})
-		}else {
-			res.json({
-				code: 200,
-				msg: '修改成功'
-			})
-		}
-	})
+	if (id) {
+		movieModel.updateOne({ _id : id},{
+			name: reqBody.name,
+			title: reqBody.title,
+			doctor: reqBody.doctor,
+			year: reqBody.year,
+			updateTime: reqBody.updateTime,
+			country: reqBody.country,
+			updateTime: reqBody.updateTime,
+			country: reqBody.country,
+			language: reqBody.language,
+			summary: reqBody.summary
+		}, (err, data) => {
+			if (err) {
+				res.json({
+					code: 500,
+					msg: err
+				})
+			}else {
+				res.json({
+					code: 200,
+					msg: '修改成功'
+				})
+			}
+		})
+	} else {
+		const movieData = new movieModel({
+			name: reqBody.name,
+			title: reqBody.title,
+			doctor: reqBody.doctor,
+			year: reqBody.year,
+			updateTime: reqBody.updateTime,
+			country: reqBody.country,
+			updateTime: reqBody.updateTime,
+			country: reqBody.country,
+			language: reqBody.language,
+			summary: reqBody.summary
+		})
+		movieData.save((err, data) => {
+			if (err) {
+				res.json({
+					code: 500,
+					msg: err
+				})
+			}else {
+				res.json({
+					code: 200,
+					msg: '添加成功'
+				})
+			}
+		})
+	}
 }

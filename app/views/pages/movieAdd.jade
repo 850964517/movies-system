@@ -1,0 +1,24 @@
+extend ../layout
+
+block content
+	.login-box
+		p.list-title 添加电影
+		label.control-label 电影名字: 
+		input.form-control#movie-name(type="text", placeholder="请输入电影名字")
+		label.control-label(style="margin-top:20px") 电影标题:
+		input.form-control#movie-title(type="text", placeholder="请输入电影标题")
+		label.control-label(style="margin-top:20px") 导演:
+		input.form-control#movie-doctor(type="text", placeholder="请输入导演名称")
+		label.control-label(style="margin-top:20px") 上映年份:
+		input.form-control#movie-year(type="text", placeholder="请输入电影上映年份")
+		label.control-label(style="margin-top:20px") 录入年份:
+		input.form-control#movie-updateTime(type="text", placeholder="请输入电影录入年份")
+		abel.control-label(style="margin-top:20px") 国家:
+		input.form-control#movie-country(type="text", placeholder="请输入电影地区")
+		label.control-label(style="margin-top:20px") 语言:
+		input.form-control#movie-language(type="text", placeholder="请输入电影地区")
+		label.control-label(style="margin-top:20px") 说明:
+		input.form-control#movie-summary(type="text", placeholder="请输入电影地区")
+		a.btn.btn-default(href='/movie/list',role='button',style="margin-top:5px") 返回
+		span#add-btn.btn-primary.pull-right(type="bottom") 确定
+	script(src="/js/updateMovie.js")

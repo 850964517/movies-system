@@ -3,7 +3,7 @@ extend ../layout
 block content
 	.head-box
 		p.list-title 电影列表
-		button.btn.btn-primary.add-btn(type="button") 添加电影
+		a.btn.btn-default(href='/movie/add',role='button',style="margin-top:-50px") 添加电影
 	.container
 		.row
 			table.table.table-hover.table-bordered
@@ -15,19 +15,25 @@ block content
 						th 上映年份
 						th 录入时间
 						th 国家
-						th 查看
+						th 语言
+						//- th 视频地址
+						th 说明
+						//- th 查看
 						th 修改
 						th 删除
 				tbody
 					each item in movies
 						tr(class="item-id-#{item._id}")
-							td #{item.name}
-							td #{item.title}
-							td #{item.doctor}
-							td #{item.year}
-							td #{item.updateTime}
-							td #{item.country}
-							td: a(target="_blank", href="/movie/#{item._id}") 查看
+							td #{item.name || ''}
+							td #{item.title || ''}
+							td #{item.doctor || ''}
+							td #{item.year || ''}
+							td #{item.updateTime || ''}
+							td #{item.country || ''}
+							td #{item.language || ''}
+							//- td #{item.flash}
+							td #{item.summary || ''}
+							//- td: a(target="_blank", href="/movie/#{item._id}") 查看
 							td: a(target="_blank", href="/movie/update/#{item._id}") 修改
 							td: button.btn.btn-danger.del(type="button", data-id="#{item._id}") 删除
 	script(src="/js/movie.js")
