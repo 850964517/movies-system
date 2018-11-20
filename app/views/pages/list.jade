@@ -24,15 +24,15 @@ block content
 				tbody
 					each item in movies
 						tr(class="item-id-#{item._id}")
-							td #{item.name || ''}
-							td #{item.title || ''}
-							td #{item.doctor || ''}
-							td #{item.year || ''}
-							td #{item.updateTime || ''}
-							td #{item.country || ''}
-							td #{item.language || ''}
+							td #{item.name}
+							td #{item.title}
+							td #{item.doctor}
+							td #{item.year}
+							td #{item.updateTime}
+							td #{item.country}
+							td #{item.language}
 							//- td #{item.flash}
-							td #{item.summary || ''}
+							td #{item.summary}
 							//- td: a(target="_blank", href="/movie/#{item._id}") 查看
 							td: a(target="_blank", href="/movie/update/#{item._id}") 修改
 							td: button.btn.btn-danger.del(type="button", data-id="#{item._id}") 删除

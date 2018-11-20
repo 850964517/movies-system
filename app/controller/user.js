@@ -17,6 +17,7 @@ module.exports.showSignup = function (req, res) {
 module.exports.login = function (req,res) {
 	const reqBody = req.body;
 	userModel.searchOne(reqBody.username,(err, userData) => {
+		console.log(userData)
 		if (!userData || err) {
 			res.json({
 				code: 500,

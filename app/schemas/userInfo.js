@@ -13,5 +13,8 @@ userSchema.statics = {
 		}).exec(callback);
 	}
 };
-
+// schemas 可以用个add方法添加额外的key值
+userSchema.add({
+	age: Number
+})
 module.exports = userSchema;

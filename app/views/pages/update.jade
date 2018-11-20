@@ -4,21 +4,21 @@ block content
 	p.list-title 修改电影
 	.login-box
 		label.control-label 电影名字: 
-		input.form-control#movie-name(type="text", placeholder="请输入电影名字", value="#{movie.name || ''}")
+		input.form-control#movie-name(type="text", placeholder="请输入电影名字", value=movie.name)
 		label.control-label(style="margin-top:20px") 电影标题:
-		input.form-control#movie-title(type="text", placeholder="请输入电影标题", value="#{movie.title || ''}")
+		input.form-control#movie-title(type="text", placeholder="请输入电影标题", value=movie.title)
 		label.control-label(style="margin-top:20px") 导演:
-		input.form-control#movie-doctor(type="text", placeholder="请输入导演名称", value="#{movie.doctor || ''}")
+		input.form-control#movie-doctor(type="text", placeholder="请输入导演名称", value=movie.doctor)
 		label.control-label(style="margin-top:20px") 上映年份:
-		input.form-control#movie-year(type="text", placeholder="请输入电影上映年份", value="#{movie.year || ''}")
+		input.form-control#movie-year(type="text", placeholder="请输入电影上映年份", value=movie.year)
 		label.control-label(style="margin-top:20px") 录入年份:
-		input.form-control#movie-updateTime(type="text", placeholder="请输入电影录入年份", value="#{movie.updateTime || ''}")
+		input.form-control#movie-updateTime(type="text", placeholder="请输入电影录入年份", value=movie.updateTime)
 		label.control-label(style="margin-top:20px") 国家:
-		input.form-control#movie-country(type="text", placeholder="请输入电影地区", value="#{movie.country || ''}")
+		input.form-control#movie-country(type="text", placeholder="请输入电影地区", value=movie.country)
 		label.control-label(style="margin-top:20px") 语言:
-		input.form-control#movie-language(type="text", placeholder="请输入电影地区", value="#{movie.language || ''}")
+		input.form-control#movie-language(type="text", placeholder="请输入电影地区", value=movie.language)
 		label.control-label(style="margin-top:20px") 说明:
-		input.form-control#movie-summary(type="text", placeholder="请输入电影地区", value="#{movie.summary || ''}")
+		input.form-control#movie-summary(type="text", placeholder="请输入电影地区", value=movie.summary)
 		a.btn.btn-default(href='/movie/list',role='button',style="margin-top:5px") 返回
 		input(type='hidden',id='movie-id',value="#{movie._id}")
 		span#update-btn.btn-primary.pull-right(type="bottom") 确定

@@ -14,7 +14,7 @@ module.exports.list = function (req,res) {
 // 删除电影
 module.exports.delMovie = function (req,res) {
 	const id = req.query.id
-	movieModel.remove({_id:id}, (err) => {
+	movieModel.deleteOne({_id:id}, (err) => {
 		if (err){
 			res.json({
 				code: 500,
