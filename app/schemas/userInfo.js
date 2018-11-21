@@ -9,7 +9,6 @@ userSchema.statics = {
 	searchOne: function (userName,callback) {
 		return this.findOne({
 			userName: userName
-			// password: password
 		}).exec(callback);
 	}
 };

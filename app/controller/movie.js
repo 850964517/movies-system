@@ -60,18 +60,7 @@ module.exports.save = function (req,res) {
 	const reqBody = req.body
 	const id = reqBody.id
 	if (id) {
-		movieModel.updateOne({ _id : id},{
-			name: reqBody.name,
-			title: reqBody.title,
-			doctor: reqBody.doctor,
-			year: reqBody.year,
-			updateTime: reqBody.updateTime,
-			country: reqBody.country,
-			updateTime: reqBody.updateTime,
-			country: reqBody.country,
-			language: reqBody.language,
-			summary: reqBody.summary
-		}, (err, data) => {
+		movieModel.updateOne({ _id : id},reqBody, (err, data) => {
 			if (err) {
 				res.json({
 					code: 500,
@@ -85,18 +74,7 @@ module.exports.save = function (req,res) {
 			}
 		})
 	} else {
-		const movieData = new movieModel({
-			name: reqBody.name,
-			title: reqBody.title,
-			doctor: reqBody.doctor,
-			year: reqBody.year,
-			updateTime: reqBody.updateTime,
-			country: reqBody.country,
-			updateTime: reqBody.updateTime,
-			country: reqBody.country,
-			language: reqBody.language,
-			summary: reqBody.summary
-		})
+		const movieData = new movieModel(reqBody)
 		movieData.save((err, data) => {
 			if (err) {
 				res.json({
