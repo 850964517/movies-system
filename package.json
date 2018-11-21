@@ -6,9 +6,9 @@
   "scripts": {
     "dev": "node app.js",
     "lint": "npm run lint:js",
-    "lint:js": "eslint --ext .js,app/* config public/js --fix",
+    "lint:js": "eslint --ext .js,app/* config public/js test --fix",
     "precommit": "npm run lint",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "node test/index.js"
   },
   "keywords": [
     "movies",
@@ -19,6 +19,7 @@
   "license": "MIT",
   "dependencies": {
     "bcrypt": "^3.0.2",
+    "chromedriver": "^2.43.2",
     "connect-mongo": "^2.0.1",
     "cookie-parser": "^1.4.3",
     "express": "^4.16.4",
@@ -27,6 +28,7 @@
     "moment": "^2.22.2",
     "mongoose": "^5.3.9",
     "pre-commit": "^1.2.2",
+    "selenium-webdriver": "^4.0.0-alpha.1",
     "underscore": "^1.9.1"
   },
   "devDependencies": {
