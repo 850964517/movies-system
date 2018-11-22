@@ -12,7 +12,7 @@ $(function(){
 				url: '/movie/list?id='+id,
 				type:'DELETE',
 				success: function(data) {
-					alert(data.msg);
+					console.log(data.msg);
 					if (data.code === 200) {
 						tr.remove();
 					} 

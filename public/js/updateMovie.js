@@ -26,10 +26,10 @@ $(function() {
 			},
 			success: function (data) {
 				if (data.code === 200) {
-					alert('修改成功');
+					console.log('修改成功');
 					window.location.href = '/movie/list';
 				} else {
-					alert(data.msg);
+					console.log(data.msg);
 				}
 			},
 			error:function(err) {
@@ -63,10 +63,10 @@ $(function() {
 			},
 			success: function (data) {
 				if (data.code === 200) {
-					alert('添加成功');
+					console.log('添加成功');
 					window.location.href = '/movie/list';
 				} else {
-					alert(data.msg);
+					console.log(data.msg);
 				}
 			},
 			error:function(err) {
