@@ -17,10 +17,10 @@ $(function () {
 			},
 			success: function(data){
 				if (data.code === 200) {
-					console.log(data.msg)
+					console.log(data.msg);
 					window.location.href = '/movie/list';
 				} else {
-					console.log(data.msg)
+					console.log(data.msg);
 				}
 			},error(err) {
 				console.log(err);
@@ -49,7 +49,7 @@ $(function () {
 			},
 			success: function (data) {
 				if (data.code === 200) {
-					console.log('恭喜你注册成功')
+					console.log('恭喜你注册成功');
 					window.location.href = '/';
 				} else {
 					alert(data.msg);

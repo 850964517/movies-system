@@ -18,12 +18,13 @@ const fs = require('fs')
 const driver = new webdriver.Builder()
     .forBrowser('chrome')
     .build();
-async function openPage (targetPage) {
+
+const openPage = async function (targetPage) {
 	console.log(`正在验证"${targetPage.name}": ${targetPage.url}`)
   await driver.get(targetPage.url)
 }
 
-async function main () {
+const main = async function() {
 	const targetPage = { name: '电影管理系统', url: `http://localhost:5000` }
 	openPage(targetPage)
 }

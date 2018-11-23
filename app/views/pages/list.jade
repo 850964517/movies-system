@@ -3,10 +3,15 @@ extend ../layout
 block content
 	.head-box
 		p.list-title 电影列表
-		a.btn.btn-default(href='/movie/add',role='button',style="margin-top:-50px") 添加电影
-	.container
+		a.btn.btn-default(href='/movie/add',role='button',style="margin-top:0px") 添加电影
+		.col-lg-6.search-box
+			.input-group
+				input.form-control#search-input(type='text',placeholder="请输入电影名称")
+				.input-group-btn
+					button.btn.btn-default#search-btn(type="button") 搜索
+	.container(style="margin-top:60px")
 		.row
-			table.table.table-hover.table-bordered
+			table.table.table-hover.table-bordered#movie-list
 				thead
 					tr
 						th 电影名字

@@ -31,6 +31,8 @@ module.exports = (app) => {
 	app.delete('/movie/list',user.isLoginRequired, movie.delMovie);
 	// 修改电影
 	app.put('/movie/list',user.isLoginRequired,movie.save);
-
+	// 新增电影
 	app.post('/movie/list',user.isLoginRequired,movie.save);
+
+	app.get('/movie/search', user.isLoginRequired,movie.search)
 };

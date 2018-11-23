@@ -18,6 +18,9 @@ MovieSchema.statics = {
 	},
 	findById: function (id,cb) {
 		return this.findOne({_id: id}).exec(cb)
+	},
+	search: function(name,cb) {
+		return this.find({name: new RegExp(name+'.*','i')}).exec(cb)
 	}
 }
 

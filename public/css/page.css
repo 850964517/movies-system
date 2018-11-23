@@ -24,3 +24,10 @@
 	width: 1140px;
 	margin: 0px auto;
 }
+.search-box {
+	float: right;
+}
+#search-btn {
+	background-color: #007bff;
+	color: #fff;
+}
