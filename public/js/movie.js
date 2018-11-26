@@ -1,7 +1,9 @@
 /* eslint-disable no-console */
+/* eslint-disable no-undef*/
+/* eslint-disable no-unused-vars*/
 $(function(){
 	
-	renderPage($("#page-count").val())
+	renderPage($('#page-count').val());
 	// 删除电影
 	$('.del').click(function(e) {
 		const $target = $(e.target);
@@ -14,7 +16,7 @@ $(function(){
 				url: '/movie/list?id='+id,
 				type:'DELETE',
 				success: function(data) {
-					console.log(data.msg);
+					alert(data.msg);
 					if (data.code === 200) {
 						tr.remove();
 					} 
@@ -27,7 +29,7 @@ $(function(){
 
 	// 搜索电影
 	$('#search-btn').click(function () {
-		search(0, $("#search-input").val())
+		search(0, $('#search-input').val());
 	});
 
 	function search (page, search ) {
@@ -52,29 +54,29 @@ $(function(){
 						html += `<td><button type="button" data-id="${currentData._id}" class="btn btn-danger del">删除</button></td></tr>`;
 					}
 					$('#movie-list tbody').html(html);
-					page === 0 && renderPage(res.total)
+					page === 0 && renderPage(res.total);
 				}
 			},error: function (err) {
 				console.log(err);
 			}
 		});
 	}
-
 	function renderPage (page) {
 		// 分页组件
 		layui.use(['laypage', 'layer'], function(){
-		  var laypage = layui.laypage
-		  ,layer = layui.layer;
+			/* eslint-disable no-mixed-spaces-and-tabs*/
+		  var laypage = layui.laypage;
+		  const layer = layui.layer;
 		  //总页数低于页码总数
 		  const layerPage = laypage.render({
-		    elem: 'list-page'
-		    ,count: page, //数据总数
+		    elem: 'list-page',
+		  	count: page, //数据总数
 		    jump: function(obj, first) {
 		    	if(!first){ 
-		    		search(obj.curr, '')
+		    		search(obj.curr, '');
 		    	}
 		    }
 		  });
-		})
+		});
 	}
 });

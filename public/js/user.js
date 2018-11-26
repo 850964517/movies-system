@@ -20,10 +20,10 @@ $(function () {
 					console.log(data.msg);
 					window.location.href = '/movie/list';
 				} else {
-					console.log(data.msg);
+					alert(data.msg);
 				}
 			},error(err) {
-				console.log(err);
+				alert(err);
 			}
 		});
 	});
