@@ -1,5 +1,7 @@
 /* eslint-disable no-console */
 $(function(){
+	
+	renderPage($("#page-count").val())
 	// 删除电影
 	$('.del').click(function(e) {
 		const $target = $(e.target);
@@ -24,32 +26,55 @@ $(function(){
 	});
 
 	// 搜索电影
-	$("#search-btn").click(function () {
+	$('#search-btn').click(function () {
+		search(0, $("#search-input").val())
+	});
+
+	function search (page, search ) {
 		$.ajax({
-			url:"/movie/search?name=" + $("#search-input").val(),
-			type: "get",
+			url:'/movie/search?name=' + search + '&page='+ page,
+			type: 'get',
 			success: function(res) {
 				if (res.code === 200) {
-					const data = res.data
-					let html = '',currentData = null
+					const data = res.data;
+					let html = '',currentData = null;
 					for (var i = 0; i < data.length;i++) {
-						currentData = data[i]
-						html += `<tr><td>${currentData.name}</td>`
-						html += `<td>${currentData.title}</td>`
-						html += `<td>${currentData.doctor}</td>`
-						html += `<td>${currentData.year}</td>`
-						html += `<td>${currentData.updateTime}</td>`
-						html += `<td>${currentData.country}</td>`
-						html += `<td>${currentData.language}</td>`
-						html += `<td>${currentData.summary}</td>`
-						html += `<td><a target="_blank" href="/movie/update/${currentData._id}">修改</a></td>`
-						html += `<td><button type="button" data-id="${currentData._id}" class="btn btn-danger del">删除</button></td></tr>`
+						currentData = data[i];
+						html += `<tr><td>${currentData.name}</td>`;
+						html += `<td>${currentData.title}</td>`;
+						html += `<td>${currentData.doctor}</td>`;
+						html += `<td>${currentData.year}</td>`;
+						html += `<td>${currentData.updateTime}</td>`;
+						html += `<td>${currentData.country}</td>`;
+						html += `<td>${currentData.language}</td>`;
+						html += `<td>${currentData.summary}</td>`;
+						html += `<td><a target="_blank" href="/movie/update/${currentData._id}">修改</a></td>`;
+						html += `<td><button type="button" data-id="${currentData._id}" class="btn btn-danger del">删除</button></td></tr>`;
 					}
-					$("#movie-list tbody").html(html)
+					$('#movie-list tbody').html(html);
+					page === 0 && renderPage(res.total)
 				}
 			},error: function (err) {
-				console.log(err)
+				console.log(err);
 			}
+		});
+	}
+
+	function renderPage (page) {
+		// 分页组件
+		layui.use(['laypage', 'layer'], function(){
+		  var laypage = layui.laypage
+		  ,layer = layui.layer;
+		  //总页数低于页码总数
+		  const layerPage = laypage.render({
+		    elem: 'list-page'
+		    ,count: page, //数据总数
+		    jump: function(obj, first) {
+		    	if(!first){ 
+		    		search(obj.curr, '')
+		    	}
+		    }
+		  });
 		})
-	})
+	}
 });

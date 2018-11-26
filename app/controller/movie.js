@@ -2,7 +2,7 @@ const movieModel = require('../models/movie');
 const tableRowCount = 10
 // 电影列表
 module.exports.list = function (req,res) {
-	let page = +(req.query.page)
+	let page = +(req.query.page) || 0
 	page = page === 0 ? 1 : page
 	const startIndex = (page - 1) * tableRowCount 
 	const endIndex = page * tableRowCount
@@ -98,8 +98,11 @@ module.exports.save = function (req,res) {
 }
 // 搜索电影
 module.exports.search = function (req, res) {
-	movieModel.search(req.query.name, (err, movies) => {
-		console.log(err)
+	let page = +(req.query.page) || 0
+	page = page === 0 ? 1 : page
+	const startIndex = (page - 1) * tableRowCount 
+	const endIndex = page * tableRowCount
+	movieModel.search(req.query.name , (err, movies) => {
 		if (err) {
 			res.json({
 				code: 500,
@@ -108,7 +111,8 @@ module.exports.search = function (req, res) {
 		}
 		res.json({
 			code: 200,
-			data: movies
+			data: movies.slice(startIndex,endIndex),
+			total: movies.length
 		})
 	}, err => {
 		console.log(err)

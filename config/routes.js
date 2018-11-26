@@ -34,5 +34,5 @@ module.exports = (app) => {
 	// 新增电影
 	app.post('/movie/list',user.isLoginRequired,movie.save);
 
-	app.get('/movie/search', user.isLoginRequired,movie.search)
+	app.get('/movie/search', user.isLoginRequired,movie.search);
 };
