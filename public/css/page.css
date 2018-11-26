@@ -31,3 +31,7 @@
 	background-color: #007bff;
 	color: #fff;
 }
+#list-page {
+	float: right;
+	margin: 20px -10px 0 0;
+}
