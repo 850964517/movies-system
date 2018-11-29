@@ -6,6 +6,7 @@ var bodyParser = require('body-parser')
 var cookieParser = require('cookie-parser')
 var session = require('express-session')
 const MongoStore = require('connect-mongo')(session)
+const chalk = require('chalk')
 
 var port = process.env.PORT || 5000
 
@@ -44,4 +45,9 @@ app.use(session({
 require('./config/routes')(app)
 app.listen(port)
 
-console.log('server run in port:' + port)
+console.log(chalk.rgb(255,131,0)('server run in port:' + port))
+
+if ('development' === app.get('env')) {
+	console.log(chalk.bold(`> Open http://localhost:${port}`))
+}
+
