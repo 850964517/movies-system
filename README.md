@@ -5,7 +5,6 @@
 ## run Setup
 ```
 git@github.com:850964517/movies-system.git
-
 cd movies-system
 yarn
 npm run start
