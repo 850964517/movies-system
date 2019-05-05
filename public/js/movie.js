@@ -5,7 +5,7 @@ $(function(){
 	
 	renderPage($('#page-count').val());
 	// 删除电影
-	$('.del').click(function(e) {
+	$('#movie-list').on("click",".del", function(e) {
 		const $target = $(e.target);
 		const id = $target.data('id');
 		if (!id) return;
@@ -18,7 +18,7 @@ $(function(){
 				success: function(data) {
 					alert(data.msg);
 					if (data.code === 200) {
-						tr.remove();
+						$('#search-btn').trigger("click")
 					} 
 				}, error: function(err) {
 					console.log(err);
