@@ -57,7 +57,7 @@ module.exports.updateMovie = function (req,res) {
 			movie: movieData
 		})
 	}, err => {
-		console.log(err)
+		console.log(err);
 	})
 }
 
